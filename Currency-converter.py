@@ -5,7 +5,7 @@ import json
 
 Base_url = "https://api.freecurrencyapi.com/v1/latest"
 
-Api_key = open("api.txt", "r").read()
+Api_key = open("apikey.txt", "r").read().strip()
 
 
 def get_currency():
@@ -23,11 +23,11 @@ def get_currency():
 
         user_currency = input("What Currency you wanna see: ")
     
-        print(f"{user_currency} to USD:", exchange_rates[f"{user_currency}"])
+        if user_currency in exchange_rates:
+            print(f"{user_currency} to USD:", exchange_rates[user_currency])
+        else:
+            print(f"Currency {user_currency} not found!")
 
-        for currency, rate in exchange_rates.items():
-            
-            print(f"{currency}: {rate}")
            
     
     else:
