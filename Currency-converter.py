@@ -1,11 +1,11 @@
 import requests
-import math
+import json
 
 
 
 Base_url = "https://api.freecurrencyapi.com/v1/latest"
 
-Api_key = "fca_live_hxH8BgDmzqx85zo2y9iAo5aMkxdd7zUZjds5dmRU"
+Api_key = open("api.txt", "r").read().split()
 
 
 def get_currency():
@@ -17,7 +17,16 @@ def get_currency():
     if response.status_code == 200:
         data = response.json()
         
-        print(data)
+        
+        
+    exchange_rates = data["data"]
+
+    choosed_currency = input("What Currency you wanna see: ")
+    
+    print(f"{choosed_currency} to USD:", exchange_rates[f"{choosed_currency}"])
+
+    for currency, rate in exchange_rates.items():
+        print(f"{currency}: {rate}")
     
     else:
         print("Error 404!!")
