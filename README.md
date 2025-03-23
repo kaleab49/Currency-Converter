@@ -3,7 +3,7 @@
 A simple currency converter app built with Python and `customtkinter` that fetches real-time currency exchange rates using the [FreeCurrencyAPI](https://freecurrencyapi.com/).
 
 ## Features
-- Convert any currency (e.g., EUR, GBP) to USD.
+- Convert any currency (e.g., EUR, GBP,CHF...) to USD.
 - Displays error messages if the currency is not found or if there’s an issue with the API request.
 
 ## Requirements
