@@ -7,21 +7,23 @@ Base_url = "https://api.freecurrencyapi.com/v1/latest"
 Api_key = open("apikey.txt", "r").read().strip()
 
 def get_currency():
+    
     url = f"{Base_url}?apikey={Api_key}"
     
     response = requests.get(url)
     
     if response.status_code == 200:
+        print(response.status_code)
         data = response.json()
         exchange_rates = data["data"]
         user_currency = currency_entry.get()
         
         if user_currency in exchange_rates:
-            result_label.config(text=f"{user_currency} to USD: {exchange_rates[user_currency]}")
+            result_label.configure(text=f"{user_currency} to USD: {round(exchange_rates[user_currency], 2)}")
         else:
-            result_label.config(text=f"Currency {user_currency} not found!")
+            result_label.configure(text=f"Currency {user_currency} not found!")
     else:
-        result_label.config(text="Error 404!!")
+        result_label.configure(text="Error 404!!")
 
 app = ctk.CTk()
 app.title("Currency Converter")
