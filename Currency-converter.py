@@ -16,7 +16,7 @@ def get_currency():
         print(response.status_code)
         data = response.json()
         exchange_rates = data["data"]
-        user_currency = currency_entry.get()
+        user_currency = currency_entry.get().upper()
         
         if user_currency in exchange_rates:
             result_label.configure(text=f"{user_currency} to USD: {round(exchange_rates[user_currency], 2)}")
